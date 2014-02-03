@@ -1,0 +1,5 @@
+<div ng-include="'partials/navbar'"></div>
+Conferences
+<ul>
+    <li ng-repeat="conf in conferenceList"><a href="/conferences/{{ conf._id }}">{{ conf.name }}</a></li>
+</ul>

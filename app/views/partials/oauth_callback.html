@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vk callback</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.opener.oauth_callback(<%- JSON.stringify(userData) %>);
+        window.close();
+    </script>
+</body>
+</html>

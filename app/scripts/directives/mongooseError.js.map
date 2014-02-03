@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "mongooseError.js",
+  "sourceRoot": "",
+  "sources": [
+    "mongooseError.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,UAAA;CAEA;;;CAFA;CAAA,CAKA,CAAyD,GAAzD,CAAO,EAAP,IAAA,EAAA;WACE;CAAA,CAAU,CAAV,GAAA,EAAA;CAAA,CACS,IAAT,CAAA,EADA;CAAA,CAEM,CAAA,CAAN,CAAM,CAAN,CAAM,EAAC;CACG,CAAR,CAAsB,IAAf,EAAP,MAAA;CACU,CAAyB,EAAjC,GAAO,GAAP,EAAA,KAAA;CADF,QAAsB;CAHxB,MAEM;CAHiD;CAAzD,EAAyD;CALzD"
+}
