@@ -1,6 +1,6 @@
 "use strict"
 api = require("./controllers/api")
-conferences = require("./controllers/conferences")
+#conferences = require("./controllers/conferences")
 index = require("./controllers")
 users = require("./controllers/users")
 session = require("./controllers/session")
@@ -26,12 +26,12 @@ module.exports = (app) ->
   app.get "/auth/oauth/callback", session.oauthCallback, session.closeWindow
 
 
-  app.post "/api/conferences/:id/slides", auth(admin:true, user: auth.checkOwner), conferences.uploadSlides
-  app.get "/api/conferences", conferences.index
-  app.get "/api/conferences/:id", conferences.show
-  app.post "/api/conferences", conferences.create
-  app.del "/api/conferences/:id", conferences.delete
-  app.put "/api/conferences/:id", conferences.update
+#  app.post "/api/conferences/:id/slides", auth(admin:true, user: auth.checkOwner), conferences.uploadSlides
+#  app.get "/api/conferences", conferences.index
+#  app.get "/api/conferences/:id", conferences.show
+#  app.post "/api/conferences", conferences.create
+#  app.del "/api/conferences/:id", conferences.delete
+#  app.put "/api/conferences/:id", conferences.update
 
   # All other routes to use Angular routing in app/scripts/app.js
   app.get "/partials/*", index.partials

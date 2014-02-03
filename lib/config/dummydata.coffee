@@ -1,7 +1,7 @@
 "use strict"
 mongoose = require("mongoose")
 User = mongoose.model("User")
-Conference = mongoose.model("Conference")
+#Conference = mongoose.model("Conference")
 Thing = mongoose.model("Thing")
 
 ###

@@ -1,6 +1,6 @@
 "use strict"
 mongoose = require("mongoose")
-Conference = mongoose.model('Conference')
+Conference = mongoose.model('Message')
 
 exports.index = (req, res, next) ->
   Conference.find {}, (err, all)->

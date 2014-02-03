@@ -1,14 +1,11 @@
 <div class="header" ng-controller="NavbarCtrl">
   <ul class="nav nav-pills pull-right">
-    <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-        <a ng-href="{{item.link}}">{{item.title}}</a>
-    </li>
+    <li ng-class="{active: isActive('/')}"><a href="/">Home</a></li>
+    <li ng-show="currentUser" ng-class="{active: isActive('/settings')}"><a href="/settings">Settings</a></li>
     <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
     <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
     <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
-    <li><a href="/chat">Chat</a></li>
-    <li><a href="/slideshare">Slideshare</a></li>
-    <li><a href="/conferences">Conferences</a></li>
+    <li ng-show="currentUser">{{ currentUser.first_name }}</li>
   </ul>
-  <h3 class="text-muted">vivoconf</h3>
+  <h3 class="text-muted">SSAU radio</h3>
 </div>

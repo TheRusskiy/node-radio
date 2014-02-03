@@ -10,12 +10,6 @@
     }).when("/signup", {
       templateUrl: "partials/signup",
       controller: "SignupCtrl"
-    }).when("/conferences", {
-      templateUrl: "partials/conference_list",
-      controller: "ConferenceListCtrl"
-    }).when("/conferences/:id", {
-      templateUrl: "partials/conference",
-      controller: "ConferenceCtrl"
     }).when("/settings", {
       templateUrl: "partials/settings",
       controller: "SettingsCtrl",

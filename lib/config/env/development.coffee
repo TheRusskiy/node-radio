@@ -6,5 +6,5 @@ module.exports = {
     log_level: 2
 
   mongo:
-    uri: "mongodb://localhost/fullstack-dev"
+    uri: "mongodb://localhost/radio-dev"
 }

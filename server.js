@@ -58,8 +58,6 @@ require('./lib/config/socketio')(io);
 // Chat
 require('./lib/chat')(app, io);
 
-// Slideshare
-require('./lib/slideshare')(app, io);
 
 if (process.env.NODE_ENV == 'development'){
     setTimeout(function() {

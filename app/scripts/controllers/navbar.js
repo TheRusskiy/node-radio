@@ -1,15 +1,6 @@
 (function() {
   "use strict";
   angular.module("vivoconfApp").controller("NavbarCtrl", function($scope, $location, Auth, $cookieStore) {
-    $scope.menu = [
-      {
-        title: "Home",
-        link: "/"
-      }, {
-        title: "Settings",
-        link: "/settings"
-      }
-    ];
     $scope.logout = function() {
       return Auth.logout().then(function() {
         $cookieStore.remove("currentUser");
