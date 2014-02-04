@@ -9,12 +9,12 @@
 
       <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                           'has-error': form.name.$invalid && submitted }">
-        <label>Name</label>
+        <label>Nickname</label>
 
-        <input type="text" name="name" class="form-control" ng-model="user.name"
+        <input type="text" name="nickname" class="form-control" ng-model="user.name"
                required/>
-        <p class="help-block" ng-show="form.name.$error.required && submitted">
-          A name is required
+        <p class="help-block" ng-show="form.nickname.$error.required && submitted">
+          A nickname is required
         </p>
       </div>   
 

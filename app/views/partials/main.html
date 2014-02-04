@@ -1,8 +1,7 @@
 <div ng-include="'partials/navbar'"></div>
 <div ng-controller="ChatCtrl">
-    Chat
-    <input type="text" ng-model="currentMessage"/>
-    <input type="button" ng-click="submitMessage(currentMessage)" value="Submit"/>
+
+    <h2>Chat</h2>
     <ul>
         <li ng-repeat="msg in messages track by $index">
             <img ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
@@ -12,6 +11,20 @@
                href="" ng-click="deleteMessage(msg)" >
                 X
             </a>
+        </li>
+    </ul>
+    <input type="text" ng-model="currentMessage"/>
+    <input type="button" ng-click="submitMessage(currentMessage)" value="Send"/>
+
+    <hr/>
+    <h2>Users</h2>
+    <ul>
+        <li ng-repeat="user in users track by $index">
+            <img ng-src="{{ user.avatar_url }}" width="20" height="20"/>
+            {{ user.nickname }}
+            <span ng-show="user.role=='admin'">
+                (Admin)
+            </span>
         </li>
     </ul>
 </div>

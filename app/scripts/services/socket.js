@@ -3,6 +3,7 @@
   angular.module("radioApp").service("Socket", function($rootScope) {
     var socket;
     socket = io.connect();
+    io.currSocket = socket.socket;
     return function($scope) {
       if ($scope._subscriptions == null) {
         $scope._subscriptions = [];

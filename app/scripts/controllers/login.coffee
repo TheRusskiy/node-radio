@@ -6,7 +6,10 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
     Auth.vkLogin (data) ->
       alert JSON.stringify(data)
       $scope.$apply ->
+        io.currSocket.disconnect()
+        io.currSocket.connect()
         $rootScope.currentUser = new User(data)
+        $location.path "/"
   #            $cookieStore.put('currentUser', $rootScope.currentUser);
 
 
@@ -14,7 +17,10 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
     Auth.fbLogin (data) ->
       alert JSON.stringify(data)
       $scope.$apply ->
+        io.currSocket.disconnect()
+        io.currSocket.connect()
         $rootScope.currentUser = new User(data)
+        $location.path "/"
 
 
   #            $cookieStore.put('currentUser', $rootScope.currentUser);
@@ -26,6 +32,8 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
         password: $scope.user.password
       ).then ()->
         # Logged in, redirect to home
+        io.currSocket.disconnect()
+        io.currSocket.connect()
         $location.path "/"
       .catch (err)->
         err = err.data;

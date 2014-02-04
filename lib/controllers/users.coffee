@@ -26,7 +26,7 @@ Get profile of specified user
 ###
 exports.show = (req, res, next) ->
   userId = req.params.id
-  User.findById userId, (err, user) ->
+  User.findById userId, "-salt -hashedPassword", (err, user) ->
     return next(new Error("Failed to load User"))  if err
     if user
       res.send profile: user.profile
@@ -42,7 +42,7 @@ exports.changePassword = (req, res, next) ->
   userId = req.user._id
   oldPass = String(req.body.oldPassword)
   newPass = String(req.body.newPassword)
-  User.findById userId, (err, user) ->
+  User.findById userId, "-salt -hashedPassword", (err, user) ->
     if user.authenticate(oldPass)
       user.password = newPass
       user.save (err) ->
@@ -66,7 +66,7 @@ exports.me = (req, res) ->
     res.send 404, "USER_NOT_FOUND"
     return
   userId = req.user._id
-  User.findById userId, (err, user) ->
+  User.findById userId, "-salt -hashedPassword", (err, user) ->
     return next(new Error("Failed to load User"))  if err
     if user
       res.json user

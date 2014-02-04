@@ -41,11 +41,11 @@
       }
       return $scope.messages = messages;
     });
+    Socket($scope).on('user_list', function(users) {
+      return $scope.users = users;
+    });
     Socket($scope).on('message_created', function(msg) {
       msg.readableDate = readableDate(msg.date);
-      if (msg.avatar_url == null) {
-        msg.avatar_url = '/images/anonymous.png';
-      }
       return $scope.messages.push(msg);
     });
     Socket($scope).on('message_deleted', function(msg) {

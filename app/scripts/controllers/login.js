@@ -7,7 +7,10 @@
       return Auth.vkLogin(function(data) {
         alert(JSON.stringify(data));
         return $scope.$apply(function() {
-          return $rootScope.currentUser = new User(data);
+          io.currSocket.disconnect();
+          io.currSocket.connect();
+          $rootScope.currentUser = new User(data);
+          return $location.path("/");
         });
       });
     };
@@ -15,7 +18,10 @@
       return Auth.fbLogin(function(data) {
         alert(JSON.stringify(data));
         return $scope.$apply(function() {
-          return $rootScope.currentUser = new User(data);
+          io.currSocket.disconnect();
+          io.currSocket.connect();
+          $rootScope.currentUser = new User(data);
+          return $location.path("/");
         });
       });
     };
@@ -26,6 +32,8 @@
           email: $scope.user.email,
           password: $scope.user.password
         }).then(function() {
+          io.currSocket.disconnect();
+          io.currSocket.connect();
           return $location.path("/");
         })["catch"](function(err) {
           err = err.data;

@@ -10,7 +10,7 @@ SALT_WORK_FACTOR = 10
 User Schema
 ###
 UserSchema = new Schema(
-  name: String
+  nickname: String
   email:
     type: String
     unique: true
@@ -47,14 +47,14 @@ UserSchema.virtual("password").set((password) ->
 
 # Basic info to identify the current authenticated user in the app
 UserSchema.virtual("userInfo").get ->
-  name: @name
+  nickname: @nickname
   role: @role
   provider: @provider
 
 
 # Public profile information
 UserSchema.virtual("profile").get ->
-  name: @name
+  nickname: @nickname
   role: @role
 
 

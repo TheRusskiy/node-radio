@@ -50,13 +50,14 @@ module.exports = ()->
     }
   , (accessToken, refreshToken, profile, done) ->
     User.findOne('vkontakte.id': profile.id)
-    .select("first_name last_name vkontakte.id email pic_small role")
+    .select("nickname first_name last_name vkontakte.id email avatar_url role")
     .exec (err, user) ->
       unless user?
           user = new User {
             first_name: profile._json.first_name
             last_name: profile._json.last_name
-            pic_small: profile._json.photo
+            nickname: profile._json.first_name+' '+profile._json.last_name
+            avatar_url: profile._json.photo
             vkontakte: profile
             providers: ['vkontakte']
           }
@@ -74,14 +75,15 @@ module.exports = ()->
     }
   , (accessToken, refreshToken, profile, done) ->
     User.findOne('email': profile._json.email)
-    .select("first_name last_name facebook.id email pic_small role")
+    .select("nickname first_name last_name facebook.id email avatar_url role")
     .exec (err, user) ->
       unless user?
         user = new User {
           email: profile._json.email
           first_name: profile._json.first_name
           last_name: profile._json.last_name
-          pic_small: "http://graph.facebook.com/#{profile.id}/picture"
+          nickname: profile._json.username
+          avatar_url: "http://graph.facebook.com/#{profile.id}/picture"
           facebook: profile
           providers: ['facebook']
         }

@@ -1,6 +1,7 @@
 "use strict"
 angular.module("radioApp").service "Socket", ($rootScope) ->
   socket = io.connect()
+  io.currSocket = socket.socket
   return ($scope)->
     $scope._subscriptions?= []
     $scope.$on '$destroy', (event)->

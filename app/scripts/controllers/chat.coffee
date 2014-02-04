@@ -26,9 +26,11 @@ angular.module('radioApp')
         msg.readableDate = readableDate(msg.date)
       $scope.messages = messages
 
+    Socket($scope).on 'user_list', (users)->
+      $scope.users = users
+
     Socket($scope).on 'message_created', (msg)->
       msg.readableDate = readableDate(msg.date)
-      msg.avatar_url?='/images/anonymous.png'
       $scope.messages.push msg
 
     Socket($scope).on 'message_deleted', (msg)->

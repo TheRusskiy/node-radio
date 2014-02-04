@@ -4,6 +4,8 @@ config = require("./config")
 cookie = require('cookie')
 connect = require("connect")
 # http://howtonode.org/socket-io-auth
+randomIntBetween = (min,max)->
+  return Math.floor(Math.random()*(max-min+1)+min)
 
 module.exports = (io) ->
 
@@ -28,13 +30,16 @@ module.exports = (io) ->
 
       handshakeData.getSession = (cb) ->
 
+        if @_session? then return cb(null, @_session)
         # Get session from session_storage
-        session_store.get sid, (err, session) ->
+        session_store.get sid, (err, session) =>
           if err or not session
             console.log 'Session store get error:'
             console.log err
             return accept err, false
+          @_session = session
           cb err, session
+      handshakeData.randomNickname = "Guest"+randomIntBetween(1, 1000000).toString()
 
       accept null, true
 
