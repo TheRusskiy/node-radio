@@ -24,16 +24,16 @@ module.exports = ()->
 
   # add other strategies for more authentication flexibility
   passport.use new LocalStrategy(
-    usernameField: "email"
+    usernameField: "nickname"
     passwordField: "password" # this is the virtual field on the model
-  , (email, password, done) ->
+  , (nickname, password, done) ->
     User.findOne
-      email: email
+      nickname: nickname
     , (err, user) ->
       return done(err)  if err
       unless user
         return done(null, false,
-          message: "This email is not registered."
+          message: "This nickname is not registered."
         )
       unless user.authenticate(password)
         return done(null, false,

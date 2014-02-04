@@ -3,6 +3,8 @@ angular.module("radioApp").controller "NavbarCtrl", ($scope, $location, Auth, $c
   $scope.logout = ->
     Auth.logout().then ->
       $cookieStore.remove "currentUser"
+      io.currSocket.disconnect()
+      io.currSocket.connect()
       $location.path "/login"
 
 

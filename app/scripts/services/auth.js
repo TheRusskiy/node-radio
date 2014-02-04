@@ -28,7 +28,7 @@
         var cb;
         cb = callback || angular.noop;
         return Session.save({
-          email: user.email,
+          nickname: user.nickname,
           password: user.password
         }, function(user) {
           $rootScope.currentUser = user;

@@ -28,7 +28,7 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
     $scope.submitted = true
     if form.$valid
       Auth.login(
-        email: $scope.user.email
+        nickname: $scope.user.nickname
         password: $scope.user.password
       ).then ()->
         # Logged in, redirect to home

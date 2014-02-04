@@ -27,7 +27,7 @@ angular.module("radioApp").factory "Auth", Auth = ($location, $rootScope, Sessio
   login: (user, callback) ->
     cb = callback or angular.noop
     Session.save(
-      email: user.email
+      nickname: user.nickname
       password: user.password
     , (user) ->
       $rootScope.currentUser = user

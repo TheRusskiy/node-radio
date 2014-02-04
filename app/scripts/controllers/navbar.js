@@ -4,6 +4,8 @@
     $scope.logout = function() {
       return Auth.logout().then(function() {
         $cookieStore.remove("currentUser");
+        io.currSocket.disconnect();
+        io.currSocket.connect();
         return $location.path("/login");
       });
     };

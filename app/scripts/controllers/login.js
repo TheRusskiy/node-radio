@@ -29,7 +29,7 @@
       $scope.submitted = true;
       if (form.$valid) {
         return Auth.login({
-          email: $scope.user.email,
+          nickname: $scope.user.nickname,
           password: $scope.user.password
         }).then(function() {
           io.currSocket.disconnect();

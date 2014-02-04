@@ -15,6 +15,7 @@ exports.logout = (req, res) ->
 Login
 ###
 exports.login = (req, res, next) ->
+  console.log req.body
   passport.authenticate("local", (err, user, info) ->
     error = err or info
     return res.json(401, error)  if error

@@ -10,7 +10,9 @@ SALT_WORK_FACTOR = 10
 User Schema
 ###
 UserSchema = new Schema(
-  nickname: String
+  nickname:
+    type: String
+    unique: true
   email:
     type: String
     unique: true
@@ -30,7 +32,9 @@ UserSchema = new Schema(
   google: {}
   first_name: String
   last_name: String
-  avatar_url: String
+  avatar_url:
+    type: String
+    default: "http://www.gravatar.com/avatar?d=mm"
 #  _conferences : [{ type: Schema.ObjectId, ref: 'Conference' }]
 )
 

@@ -12,7 +12,7 @@ exports.create = (req, res, next) ->
   newUser.save (err) ->
     if err
       # Manually provide our own message for 'unique' validation errors, can't do it from schema
-      err.errors.email.type = "The specified email address is already in use."  if err.errors.email.type is "Value is not unique."
+      err.errors.nickname.type = "The specified nickname is already in use."  if err.errors.nickname.type is "Value is not unique."
       return res.json(400, err)
     req.logIn newUser, (err) ->
       return next(err)  if err

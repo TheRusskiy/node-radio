@@ -8,10 +8,11 @@ angular.module("radioApp").controller "SignupCtrl", ($scope, Auth, $location) ->
 
       # Account created, redirect to home
       Auth.createUser(
-        name: $scope.user.name
-        email: $scope.user.email
+        nickname: $scope.user.nickname
         password: $scope.user.password
       ).then(->
+        io.currSocket.disconnect()
+        io.currSocket.connect()
         $location.path "/"
       ).catch (err) ->
         err = err.data
