@@ -41,5 +41,7 @@ angular.module('radioApp')
     $scope.deleteMessage = (msg)->
       Socket($scope).emit 'delete_message', {id: msg._id}
 
-    $scope.submitMessage = (text)->
-      Socket($scope).emit 'create_message', {text}
+    $scope.submitMessage = (form)->
+      if form.$valid
+        Socket($scope).emit 'create_message', {text: $scope.currentMessage}
+        $scope.currentMessage = ""

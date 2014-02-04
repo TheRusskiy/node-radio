@@ -1,5 +1,5 @@
 "use strict"
-angular.module("radioApp").controller "SignupCtrl", ($scope, Auth, $location) ->
+angular.module("radioApp").controller "SignupCtrl", ($scope, Auth, $location, Socket) ->
   $scope.user = {}
   $scope.errors = {}
   $scope.register = (form) ->
@@ -11,8 +11,7 @@ angular.module("radioApp").controller "SignupCtrl", ($scope, Auth, $location) ->
         nickname: $scope.user.nickname
         password: $scope.user.password
       ).then(->
-        io.currSocket.disconnect()
-        io.currSocket.connect()
+        Socket.reconnect()
         $location.path "/"
       ).catch (err) ->
         err = err.data

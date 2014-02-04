@@ -13,20 +13,24 @@
             </a>
         </li>
     </ul>
-    <input type="text" ng-model="currentMessage"/>
-    <input type="button" ng-click="submitMessage(currentMessage)" value="Send"/>
+    <form class="form" name="form" ng-submit="submitMessage(form)" novalidate>
+        <input type="text" name="currentMessage" ng-model="currentMessage" required/>
+        <input type="submit" value="Send"/>
+    </form>
 
     <hr/>
-    <h2>Users</h2>
-    <ul>
-        <li ng-repeat="user in users track by $index">
-            <img ng-src="{{ user.avatar_url }}" width="20" height="20"/>
-            {{ user.nickname }}
-            <span ng-show="user.role=='admin'">
-                (Admin)
-            </span>
-        </li>
-    </ul>
+    <h2>Users: {{ users.length }}</h2>
+    <div ng-show="isAdmin() || true">
+        <ul>
+            <li ng-repeat="user in users track by $index">
+                <img ng-src="{{ user.avatar_url }}" width="20" height="20"/>
+                {{ user.nickname }}
+                <span ng-show="user.role=='admin'">
+                    (Admin)
+                </span>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div class="footer">

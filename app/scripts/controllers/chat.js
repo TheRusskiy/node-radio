@@ -63,10 +63,13 @@
         id: msg._id
       });
     };
-    return $scope.submitMessage = function(text) {
-      return Socket($scope).emit('create_message', {
-        text: text
-      });
+    return $scope.submitMessage = function(form) {
+      if (form.$valid) {
+        Socket($scope).emit('create_message', {
+          text: $scope.currentMessage
+        });
+        return $scope.currentMessage = "";
+      }
     };
   });
 

@@ -1,11 +1,10 @@
 (function() {
   "use strict";
-  angular.module("radioApp").controller("NavbarCtrl", function($scope, $location, Auth, $cookieStore) {
+  angular.module("radioApp").controller("NavbarCtrl", function($scope, $location, Auth, $cookieStore, Socket) {
     $scope.logout = function() {
       return Auth.logout().then(function() {
         $cookieStore.remove("currentUser");
-        io.currSocket.disconnect();
-        io.currSocket.connect();
+        Socket.reconnect();
         return $location.path("/login");
       });
     };

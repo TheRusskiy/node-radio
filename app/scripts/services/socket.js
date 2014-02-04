@@ -1,10 +1,10 @@
 (function() {
   "use strict";
   angular.module("radioApp").service("Socket", function($rootScope) {
-    var socket;
+    var returnValue, socket;
     socket = io.connect();
     io.currSocket = socket.socket;
-    return function($scope) {
+    returnValue = function($scope) {
       if ($scope._subscriptions == null) {
         $scope._subscriptions = [];
       }
@@ -47,6 +47,11 @@
         }
       };
     };
+    returnValue.reconnect = function() {
+      io.currSocket.disconnect();
+      return io.currSocket.connect();
+    };
+    return returnValue;
   });
 
 }).call(this);

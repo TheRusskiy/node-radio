@@ -1,13 +1,12 @@
 "use strict"
-angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, User, $rootScope, $cookieStore) ->
+angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, User, $rootScope, $cookieStore, Socket) ->
   $scope.user = {}
   $scope.errors = {}
   $scope.vkLogin = ->
     Auth.vkLogin (data) ->
       alert JSON.stringify(data)
       $scope.$apply ->
-        io.currSocket.disconnect()
-        io.currSocket.connect()
+        Socket.reconnect()
         $rootScope.currentUser = new User(data)
         $location.path "/"
   #            $cookieStore.put('currentUser', $rootScope.currentUser);
@@ -17,8 +16,7 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
     Auth.fbLogin (data) ->
       alert JSON.stringify(data)
       $scope.$apply ->
-        io.currSocket.disconnect()
-        io.currSocket.connect()
+        Socket.reconnect()
         $rootScope.currentUser = new User(data)
         $location.path "/"
 
@@ -32,8 +30,7 @@ angular.module("radioApp").controller "LoginCtrl", ($scope, Auth, $location, Use
         password: $scope.user.password
       ).then ()->
         # Logged in, redirect to home
-        io.currSocket.disconnect()
-        io.currSocket.connect()
+        Socket.reconnect()
         $location.path "/"
       .catch (err)->
         err = err.data;

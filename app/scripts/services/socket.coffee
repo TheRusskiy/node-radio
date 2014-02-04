@@ -2,7 +2,7 @@
 angular.module("radioApp").service "Socket", ($rootScope) ->
   socket = io.connect()
   io.currSocket = socket.socket
-  return ($scope)->
+  returnValue = ($scope)->
     $scope._subscriptions?= []
     $scope.$on '$destroy', (event)->
       for sub in $scope._subscriptions
@@ -28,5 +28,9 @@ angular.module("radioApp").service "Socket", ($rootScope) ->
           $rootScope.$apply ->
             callback.apply socket, args  if callback
     }
+  returnValue.reconnect = ()->
+    io.currSocket.disconnect()
+    io.currSocket.connect()
+  return returnValue
 
 

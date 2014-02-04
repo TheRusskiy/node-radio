@@ -1,10 +1,9 @@
 "use strict"
-angular.module("radioApp").controller "NavbarCtrl", ($scope, $location, Auth, $cookieStore) ->
+angular.module("radioApp").controller "NavbarCtrl", ($scope, $location, Auth, $cookieStore, Socket) ->
   $scope.logout = ->
     Auth.logout().then ->
       $cookieStore.remove "currentUser"
-      io.currSocket.disconnect()
-      io.currSocket.connect()
+      Socket.reconnect()
       $location.path "/login"
 
 

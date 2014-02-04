@@ -1,14 +1,13 @@
 (function() {
   "use strict";
-  angular.module("radioApp").controller("LoginCtrl", function($scope, Auth, $location, User, $rootScope, $cookieStore) {
+  angular.module("radioApp").controller("LoginCtrl", function($scope, Auth, $location, User, $rootScope, $cookieStore, Socket) {
     $scope.user = {};
     $scope.errors = {};
     $scope.vkLogin = function() {
       return Auth.vkLogin(function(data) {
         alert(JSON.stringify(data));
         return $scope.$apply(function() {
-          io.currSocket.disconnect();
-          io.currSocket.connect();
+          Socket.reconnect();
           $rootScope.currentUser = new User(data);
           return $location.path("/");
         });
@@ -18,8 +17,7 @@
       return Auth.fbLogin(function(data) {
         alert(JSON.stringify(data));
         return $scope.$apply(function() {
-          io.currSocket.disconnect();
-          io.currSocket.connect();
+          Socket.reconnect();
           $rootScope.currentUser = new User(data);
           return $location.path("/");
         });
@@ -32,8 +30,7 @@
           nickname: $scope.user.nickname,
           password: $scope.user.password
         }).then(function() {
-          io.currSocket.disconnect();
-          io.currSocket.connect();
+          Socket.reconnect();
           return $location.path("/");
         })["catch"](function(err) {
           err = err.data;

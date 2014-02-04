@@ -11,8 +11,10 @@ exports.create = (req, res, next) ->
   newUser.provider = "local"
   newUser.save (err) ->
     if err
+      if err then console.log err
       # Manually provide our own message for 'unique' validation errors, can't do it from schema
-      err.errors.nickname.type = "The specified nickname is already in use."  if err.errors.nickname.type is "Value is not unique."
+      if err.errors.nickname.type is "Value is not unique."
+        err.errors.nickname.type = "The specified nickname is already in use."
       return res.json(400, err)
     req.logIn newUser, (err) ->
       return next(err)  if err
@@ -36,23 +38,34 @@ exports.show = (req, res, next) ->
 
 
 ###
-Change password
+Update profile
 ###
-exports.changePassword = (req, res, next) ->
+exports.updateProfile = (req, res, next) ->
   userId = req.user._id
   oldPass = String(req.body.oldPassword)
   newPass = String(req.body.newPassword)
-  User.findById userId, "-salt -hashedPassword", (err, user) ->
-    if user.authenticate(oldPass)
-      user.password = newPass
-      user.save (err) ->
-        if err
-          res.send 500, err
-        else
-          res.send 200
+  User.findById userId, "", (err, user) ->
+    console.log oldPass
+    console.log user.authenticate(oldPass)
+    if oldPass isnt "undefined" and not user.authenticate(oldPass)
+      err =
+        errors:
+          password:
+            type: "Old password is incorrect"
+      res.json 400, err
+      return
+    user.password = newPass if oldPass
+    user.nickname = req.body.nickname
+    user.save (err) ->
+      if err
+        if err.errors.nickname.type is "Value is not unique."
+          err.errors.nickname.type = "The specified nickname is already in use."
+        res.json 500, err
+      else
+        req.logIn user, (err) ->
+          return next(err) if err
+          res.json 200
 
-    else
-      res.send 400
 
 
 

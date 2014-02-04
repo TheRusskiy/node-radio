@@ -15,7 +15,7 @@ module.exports = (app) ->
   # Server API Routes
   app.get "/api/awesomeThings", api.awesomeThings
   app.post "/api/users", users.create
-  app.put "/api/users", users.changePassword
+  app.put "/api/users", users.updateProfile
   app.get "/api/users/me", users.me
   app.get "/api/users/:id", users.show
 

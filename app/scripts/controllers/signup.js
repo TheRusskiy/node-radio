@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("radioApp").controller("SignupCtrl", function($scope, Auth, $location) {
+  angular.module("radioApp").controller("SignupCtrl", function($scope, Auth, $location, Socket) {
     $scope.user = {};
     $scope.errors = {};
     return $scope.register = function(form) {
@@ -10,8 +10,7 @@
           nickname: $scope.user.nickname,
           password: $scope.user.password
         }).then(function() {
-          io.currSocket.disconnect();
-          io.currSocket.connect();
+          Socket.reconnect();
           return $location.path("/");
         })["catch"](function(err) {
           err = err.data;

@@ -73,7 +73,7 @@
         }).$promise;
       },
       /*
-      Change password
+      Update profile
       
       @param  {String}   oldPassword
       @param  {String}   newPassword
@@ -81,15 +81,20 @@
       @return {Promise}
       */
 
-      changePassword: function(oldPassword, newPassword, callback) {
-        var cb;
+      updateProfile: function(user, callback) {
+        var cb, changes, newPassword, nickname, oldPassword;
+        oldPassword = user.oldPassword;
+        newPassword = user.newPassword;
+        nickname = user.nickname;
         cb = callback || angular.noop;
-        return User.update({
+        changes = oldPassword != null ? {
           oldPassword: oldPassword,
-          newPassword: newPassword
-        }, function(user) {
-          return cb(user);
-        }, function(err) {
+          newPassword: newPassword,
+          nickname: nickname
+        } : {
+          nickname: nickname
+        };
+        return User.update(changes, function(user) {}, cb(user), function(err) {
           return cb(err);
         }).$promise;
       },

@@ -73,19 +73,30 @@ angular.module("radioApp").factory "Auth", Auth = ($location, $rootScope, Sessio
 
 
   ###
-  Change password
+  Update profile
   
   @param  {String}   oldPassword
   @param  {String}   newPassword
   @param  {Function} callback    - optional
   @return {Promise}
   ###
-  changePassword: (oldPassword, newPassword, callback) ->
+  updateProfile: (user, callback) ->
+    oldPassword = user.oldPassword
+    newPassword = user.newPassword
+    nickname = user.nickname
     cb = callback or angular.noop
-    User.update(
-      oldPassword: oldPassword
-      newPassword: newPassword
-    , (user) ->
+    changes = if oldPassword?
+      {
+        oldPassword: oldPassword
+        newPassword: newPassword
+        nickname: nickname
+      }
+    else
+      {
+        nickname: nickname
+      }
+    User.update( changes,
+      (user) ->
       cb user
     , (err) ->
       cb err
