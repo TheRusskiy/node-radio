@@ -8,6 +8,10 @@
             <img ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
             {{ msg.readableDate }}
             <strong>{{ msg.nickname }}:</strong> {{ msg.text }}
+            <a ng-show="isAdmin() || msg.author_id===currentUser._id"
+               href="" ng-click="deleteMessage(msg)" >
+                X
+            </a>
         </li>
     </ul>
 </div>

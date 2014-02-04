@@ -30,7 +30,7 @@ UserSchema = new Schema(
   google: {}
   first_name: String
   last_name: String
-  pic_small: String
+  avatar_url: String
 #  _conferences : [{ type: Schema.ObjectId, ref: 'Conference' }]
 )
 

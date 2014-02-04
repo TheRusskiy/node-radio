@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").controller("NavbarCtrl", function($scope, $location, Auth, $cookieStore) {
+  angular.module("radioApp").controller("NavbarCtrl", function($scope, $location, Auth, $cookieStore) {
     $scope.logout = function() {
       return Auth.logout().then(function() {
         $cookieStore.remove("currentUser");

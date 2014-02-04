@@ -1,6 +1,9 @@
 (function() {
   'use strict';
-  angular.module('vivoconfApp').controller('AppCtrl', function($scope, $http, Auth, $rootScope) {
+  angular.module('radioApp').controller('AppCtrl', function($scope, $http, Auth, $rootScope) {
+    $rootScope.isAdmin = function() {
+      return ($rootScope.currentUser != null) && $rootScope.currentUser.role === 'admin';
+    };
     if (!$rootScope.currentUser) {
       return Auth.currentUser().$promise.then(function(user) {
         return $rootScope.currentUser = user;

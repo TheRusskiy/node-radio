@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('vivoconfApp')
+angular.module('radioApp')
   .controller 'ChatCtrl', ($scope, Socket, $rootScope)->
     readableDate = (date)->
       date = new Date(date)
@@ -13,20 +13,31 @@ angular.module('vivoconfApp')
       m = checkTime(m)
       s = checkTime(s)
       h + ":" + m + ":" + s
+    removeFromArray = (arr, item) ->
+      i = arr.length
+      while i--
+        arr.splice i, 1  if arr[i] is item
 
-    room = 'main' # doesn't really matter
-    Socket($scope).emit 'subscribe', {room}
+    Socket($scope).emit 'subscribe', {}
     $scope.messages = [ ]
+
     Socket($scope).on 'message_history', (messages)->
       for msg in messages
         msg.readableDate = readableDate(msg.date)
       $scope.messages = messages
-    Socket($scope).on 'message', (msg)->
+
+    Socket($scope).on 'message_created', (msg)->
       msg.readableDate = readableDate(msg.date)
       msg.avatar_url?='/images/anonymous.png'
       $scope.messages.push msg
 
-#    Chat.onMessage (msg)->
-#
+    Socket($scope).on 'message_deleted', (msg)->
+      for m in $scope.messages
+        if m._id is msg._id
+          return removeFromArray($scope.messages, m)
+
+    $scope.deleteMessage = (msg)->
+      Socket($scope).emit 'delete_message', {id: msg._id}
+
     $scope.submitMessage = (text)->
-      Socket($scope).emit 'message', {text, room}
+      Socket($scope).emit 'create_message', {text}

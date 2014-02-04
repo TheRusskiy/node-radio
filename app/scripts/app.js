@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]).config(function($routeProvider, $locationProvider, $httpProvider) {
+  angular.module("radioApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]).config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider.when("/", {
       templateUrl: "partials/main",
       controller: "MainCtrl"

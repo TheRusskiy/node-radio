@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").controller("SettingsCtrl", function($scope, User, Auth) {
+  angular.module("radioApp").controller("SettingsCtrl", function($scope, User, Auth) {
     $scope.errors = {};
     return $scope.changePassword = function(form) {
       $scope.submitted = true;

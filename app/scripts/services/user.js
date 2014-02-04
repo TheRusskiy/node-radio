@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").factory("User", function($resource) {
+  angular.module("radioApp").factory("User", function($resource) {
     return $resource("/api/users/:id", {
       id: "@id"
     }, {

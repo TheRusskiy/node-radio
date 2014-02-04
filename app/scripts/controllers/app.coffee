@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('vivoconfApp')
+angular.module('radioApp')
   .controller 'AppCtrl', ($scope, $http, Auth, $rootScope)->
+    $rootScope.isAdmin = ()-> $rootScope.currentUser? and $rootScope.currentUser.role is 'admin'
     unless $rootScope.currentUser
       Auth.currentUser().$promise.then( (user)->
         $rootScope.currentUser = user;

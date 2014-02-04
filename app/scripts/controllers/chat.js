@@ -1,7 +1,7 @@
 (function() {
   'use strict';
-  angular.module('vivoconfApp').controller('ChatCtrl', function($scope, Socket, $rootScope) {
-    var readableDate, room;
+  angular.module('radioApp').controller('ChatCtrl', function($scope, Socket, $rootScope) {
+    var readableDate, removeFromArray;
     readableDate = function(date) {
       var checkTime, h, m, s;
       date = new Date(date);
@@ -18,10 +18,20 @@
       s = checkTime(s);
       return h + ":" + m + ":" + s;
     };
-    room = 'main';
-    Socket($scope).emit('subscribe', {
-      room: room
-    });
+    removeFromArray = function(arr, item) {
+      var i, _results;
+      i = arr.length;
+      _results = [];
+      while (i--) {
+        if (arr[i] === item) {
+          _results.push(arr.splice(i, 1));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+    Socket($scope).emit('subscribe', {});
     $scope.messages = [];
     Socket($scope).on('message_history', function(messages) {
       var msg, _i, _len;
@@ -31,17 +41,31 @@
       }
       return $scope.messages = messages;
     });
-    Socket($scope).on('message', function(msg) {
+    Socket($scope).on('message_created', function(msg) {
       msg.readableDate = readableDate(msg.date);
       if (msg.avatar_url == null) {
         msg.avatar_url = '/images/anonymous.png';
       }
       return $scope.messages.push(msg);
     });
+    Socket($scope).on('message_deleted', function(msg) {
+      var m, _i, _len, _ref;
+      _ref = $scope.messages;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        m = _ref[_i];
+        if (m._id === msg._id) {
+          return removeFromArray($scope.messages, m);
+        }
+      }
+    });
+    $scope.deleteMessage = function(msg) {
+      return Socket($scope).emit('delete_message', {
+        id: msg._id
+      });
+    };
     return $scope.submitMessage = function(text) {
-      return Socket($scope).emit('message', {
-        text: text,
-        room: room
+      return Socket($scope).emit('create_message', {
+        text: text
       });
     };
   });

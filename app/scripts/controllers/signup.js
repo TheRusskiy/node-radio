@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").controller("SignupCtrl", function($scope, Auth, $location) {
+  angular.module("radioApp").controller("SignupCtrl", function($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
     return $scope.register = function(form) {

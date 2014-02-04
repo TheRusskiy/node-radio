@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").factory("Session", function($resource) {
+  angular.module("radioApp").factory("Session", function($resource) {
     return $resource("/api/session/");
   });
 

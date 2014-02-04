@@ -1,5 +1,5 @@
 #"use strict"
-#angular.module("vivoconfApp").factory "Conference", ($resource) ->
+#angular.module("radioApp").factory "Conference", ($resource) ->
 #  $resource "/api/conferences/:id",
 #    {id: "@id"},
 #    update:

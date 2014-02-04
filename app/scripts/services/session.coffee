@@ -1,3 +1,3 @@
 "use strict"
-angular.module("vivoconfApp").factory "Session", ($resource) ->
+angular.module("radioApp").factory "Session", ($resource) ->
   $resource "/api/session/"

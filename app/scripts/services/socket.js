@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").service("Socket", function($rootScope) {
+  angular.module("radioApp").service("Socket", function($rootScope) {
     var socket;
     socket = io.connect();
     return function($scope) {

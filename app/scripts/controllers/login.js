@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("vivoconfApp").controller("LoginCtrl", function($scope, Auth, $location, User, $rootScope, $cookieStore) {
+  angular.module("radioApp").controller("LoginCtrl", function($scope, Auth, $location, User, $rootScope, $cookieStore) {
     $scope.user = {};
     $scope.errors = {};
     $scope.vkLogin = function() {

@@ -1,5 +1,5 @@
 "use strict"
-angular.module("vivoconfApp").controller "SignupCtrl", ($scope, Auth, $location) ->
+angular.module("radioApp").controller "SignupCtrl", ($scope, Auth, $location) ->
   $scope.user = {}
   $scope.errors = {}
   $scope.register = (form) ->

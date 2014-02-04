@@ -2,7 +2,7 @@
   "use strict";
   var Auth;
 
-  angular.module("vivoconfApp").factory("Auth", Auth = function($location, $rootScope, Session, User, $cookieStore, $window) {
+  angular.module("radioApp").factory("Auth", Auth = function($location, $rootScope, Session, User, $cookieStore, $window) {
     var oauth;
     oauth = function(strategy, callback) {
       $window.open("/auth/" + strategy, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400");

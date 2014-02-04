@@ -1,5 +1,5 @@
 "use strict"
-angular.module("vivoconfApp").controller "SettingsCtrl", ($scope, User, Auth) ->
+angular.module("radioApp").controller "SettingsCtrl", ($scope, User, Auth) ->
   $scope.errors = {}
   $scope.changePassword = (form) ->
     $scope.submitted = true

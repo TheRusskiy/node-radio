@@ -4,7 +4,7 @@
   Removes server error when user updates input
   */
 
-  angular.module("vivoconfApp").directive("mongooseError", function() {
+  angular.module("radioApp").directive("mongooseError", function() {
     return {
       restrict: "A",
       require: "ngModel",

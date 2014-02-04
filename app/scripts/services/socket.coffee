@@ -1,5 +1,5 @@
 "use strict"
-angular.module("vivoconfApp").service "Socket", ($rootScope) ->
+angular.module("radioApp").service "Socket", ($rootScope) ->
   socket = io.connect()
   return ($scope)->
     $scope._subscriptions?= []

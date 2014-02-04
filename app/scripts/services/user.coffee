@@ -1,5 +1,5 @@
 "use strict"
-angular.module("vivoconfApp").factory "User", ($resource) ->
+angular.module("radioApp").factory "User", ($resource) ->
   $resource "/api/users/:id",
     id: "@id"
   ,
