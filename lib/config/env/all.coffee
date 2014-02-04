@@ -9,3 +9,4 @@ module.exports =
     options:
       db:
         safe: true
+        auto_reconnect:true
