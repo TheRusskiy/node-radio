@@ -109,14 +109,7 @@ angular.module("radioApp").factory "Auth", ($location, $rootScope, Session, User
   @return {Object} user
   ###
   currentUser: ()->
-    u = User.get()
-    if u._id?
-      return u
-    else
-      deferred = $q.defer();
-      deferred.resolve(null)
-      deferred.$promise = deferred.promise
-      return deferred
+    User.get()
 
 
   ###

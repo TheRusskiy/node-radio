@@ -1,10 +1,12 @@
 <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function(){
+        var serverAddress = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+        var icecastAddress = location.protocol+'//'+location.hostname+(":8000");
 
         var stream = {
-                    title: "ABC Jazz",
-                    mp3: "http://85.236.188.229:8000/test.mp3"
+                    title: "SSAU Radio",
+                    mp3: icecastAddress+"/test.mp3"
                 },
                 ready = false;
 
@@ -56,7 +58,7 @@
         </div>
         <div class="jp-title">
             <ul>
-                <li>ABC Jazz</li>
+                <li>SSAU Radio</li>
             </ul>
         </div>
         <div class="jp-no-solution">

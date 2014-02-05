@@ -27,10 +27,10 @@ module.exports = (app, io) ->
             removeFromArray user_list, user
         user_list.push newUser
         io.sockets.emit('user_list', user_list)
-        Message.find({}).sort({'date': 1}).limit(100).exec (err, messages)->
+        Message.find({}).sort({'date': -1}).limit(100).exec (err, messages)->
           pojos = []
           for msg in messages
-            pojos.push msg.toObject()
+            pojos.unshift msg.toObject()
           socket.emit 'message_history', pojos
     socket.on "create_message", (data) ->
       socket.handshake.getSession (err, session) ->
