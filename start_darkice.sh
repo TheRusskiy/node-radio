@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo darkice -c icecast/darkice.cfg
+darkice -c icecast/darkice.cfg
