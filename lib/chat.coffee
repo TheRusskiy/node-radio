@@ -17,7 +17,7 @@ module.exports = (app, io) ->
         else
           newUser = {
             nickname: socket.handshake.nickname
-            avatar_url : '/images/anonymous.png'
+            avatar_url : "http://www.gravatar.com/avatar?d=mm"
             role: 'guest'
           }
           socket.emit 'guest_nickname', socket.handshake.nickname
@@ -44,7 +44,7 @@ module.exports = (app, io) ->
         else
           msg.author_id = null
           msg.nickname = socket.handshake.nickname
-          msg.avatar_url?='/images/anonymous.png'
+          msg.avatar_url?="http://www.gravatar.com/avatar?d=mm"
         msg.save (err)->
           if err then console.log('Error saving message: '+err.toString())
           io.sockets.emit('message_created', msg.toObject())
