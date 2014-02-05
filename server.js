@@ -14,8 +14,12 @@ require('coffee-script');
  * Main application file
  */
 
+var file_env = "production";
+if (fs.existsSync('development')) {
+    file_env = "development";
+}
 // Default node environment to development
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || file_env || 'development';
 
 // Application Config
 var config = require('./lib/config/config');
@@ -83,7 +87,7 @@ require('./lib/chat')(app, io);
 
 if (process.env.NODE_ENV == 'development'){
     setTimeout(function() {
-      require('fs').writeFileSync('.grunt/rebooted', 'rebooted');
+      fs.writeFileSync('.grunt/rebooted', 'rebooted');
     }, 100);
 }
 // Expose app

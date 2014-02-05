@@ -34,7 +34,7 @@ UserSchema = new Schema(
   last_name: String
   avatar_url:
     type: String
-    default: "http://www.gravatar.com/avatar?d=mm"
+#    default: "http://www.gravatar.com/avatar?d=mm"
 #  _conferences : [{ type: Schema.ObjectId, ref: 'Conference' }]
 )
 

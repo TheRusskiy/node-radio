@@ -10,7 +10,8 @@ MessageSchema = new Schema(
   author_id: String
   nickname: String
   text: String
-  avatar_url: { type: String, default: "http://www.gravatar.com/avatar?d=mm" }
+  type: { type: String, default: "message"}
+  avatar_url: { type: String }
   date: { type: Date, default: Date.now }
 )
 

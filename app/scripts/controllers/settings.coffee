@@ -6,11 +6,23 @@ angular.module("radioApp").controller "SettingsCtrl", ($scope, User, Auth, $root
     $scope.message = ""
     $scope.submitted = true
     $scope.passwordUpdate = $scope.user.oldPassword?
+    oldNickname = $rootScope.currentUser.nickname
     if form.$valid or not $scope.passwordUpdate
       Auth.updateProfile($scope.user).then(->
         $scope.message = "Profile successfully updated."
-        $rootScope.currentUser = Auth.currentUser()
         Socket.reconnect()
+        $rootScope.currentUser = Auth.currentUser()
+        Auth.currentUser().$promise.then( (user)->
+          if user._id?
+            $rootScope.currentUser = user;
+            newNickname = $rootScope.currentUser.nickname
+            if oldNickname isnt newNickname then Socket($scope).emit "nickname_changed", {oldNickname, newNickname}
+          else
+            $rootScope.currentUser = null;
+        ).catch( (err)->
+          console.log('Current user:'+err.data);
+          #        $scope.errors.other = err.message;
+        );
       ).catch (err)->
         err = err.data
         $scope.errors = {}
