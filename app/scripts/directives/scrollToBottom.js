@@ -15,7 +15,6 @@
         };
         $interval(scroll, 10, 1, false);
         return scope.$watch(messages, function(newValue, oldValue) {
-          console.log('changed');
           return $interval(scroll, 10, 1, false);
         }, true);
       }

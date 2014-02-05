@@ -11,7 +11,6 @@ angular.module("radioApp").directive "scrollToBottom", ($interval)->
       scroll = ()-> element[0].scrollTop = element[0].scrollHeight
       $interval scroll, 10, 1, false
       scope.$watch messages, (newValue, oldValue)->
-        console.log 'changed'
         $interval scroll, 10, 1, false
       , true
   }
