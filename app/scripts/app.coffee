@@ -1,7 +1,7 @@
 "use strict"
 
 # Intercept 401s and 403s and redirect you to login
-angular.module("radioApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]).config(($routeProvider, $locationProvider, $httpProvider) ->
+angular.module("radioApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute", "ngAnimate"]).config(($routeProvider, $locationProvider, $httpProvider) ->
   $routeProvider.when("/",
     templateUrl: "partials/main"
     controller: "MainCtrl"

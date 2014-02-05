@@ -7,7 +7,6 @@
 
 /* Space out content a bit */
 body {
-    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -84,4 +83,58 @@ body {
     .jumbotron {
         border-bottom: 0;
     }
+}
+
+.header li {
+  display: inline;
+}
+#chat-container {
+  width: 1000px;
+  display: block;
+}
+#chat-wrapper, #user-list-wrapper {
+  display: inline-block;
+  overflow-x: hidden;
+  float: left;
+}
+#message-form #input{
+  width: 500px;
+}
+#messages, #user-list{
+  height: 600px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+#messages {
+  width: 700px;
+}
+#user-list {
+  width: 200px;
+}
+.message-info {
+  float: left;
+  width:200px;
+}
+.message-text {
+  float: left;
+  width:450px;
+}
+#messages ul, #user-list ul{
+  list-style-type: none;
+  padding-left: 0px;
+}
+.footer {
+  display: block;
+}
+.clear {
+  clear: both;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.clickable:hover {
+  cursor: pointer;
 }

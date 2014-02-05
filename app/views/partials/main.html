@@ -1,38 +1,46 @@
 <div ng-include="'partials/navbar'"></div>
-<div ng-controller="ChatCtrl">
-
-    <h2>Chat</h2>
-    <ul>
-        <li ng-repeat="msg in messages track by $index">
-            <img ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
-            {{ msg.readableDate }}
-            <strong>{{ msg.nickname }}:</strong> {{ msg.text }}
-            <a ng-show="isAdmin() || msg.author_id===currentUser._id"
-               href="" ng-click="deleteMessage(msg)" >
-                X
-            </a>
-        </li>
-    </ul>
-    <form class="form" name="form" ng-submit="submitMessage(form)" novalidate>
-        <input type="text" name="currentMessage" ng-model="currentMessage" required/>
-        <input type="submit" value="Send"/>
-    </form>
-
-    <hr/>
-    <h2>Users: {{ users.length }}</h2>
-    <div ng-show="isAdmin() || true">
-        <ul>
-            <li ng-repeat="user in users track by $index">
-                <img ng-src="{{ user.avatar_url }}" width="20" height="20"/>
-                {{ user.nickname }}
+<div ng-controller="ChatCtrl as chatCtrl" id="chat-container">
+    <div id="chat-wrapper">
+        <h2>Chat</h2>
+        <div id="messages" scroll-to-bottom="messages">
+            <ul>
+                <li ng-repeat="msg in messages track by $index">
+                    <img class="left" ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
+                    <span class="message-info"> {{ msg.readableDate }} <strong>{{ msg.nickname }}:</strong></span>
+                    <span class="message-text">{{ msg.text }}</span>
+                    <span class="right clickable" ng-show="isAdmin() || msg.author_id===currentUser._id"
+                       href="" ng-click="deleteMessage(msg)" >
+                        &#10006;
+                    </span>
+                    <div class="clear"></div>
+                    <hr ng-if="!$last"/>
+                </li>
+            </ul>
+        </div>
+        <form id="message-form" class="form" name="form" ng-submit="submitMessage(form)" novalidate>
+            <input id="input" type="text" name="currentMessage" ng-model="currentMessage" required autofocus="autofocus"/>
+            <input id="submit" type="submit" value="Send"/>
+        </form>
+    </div>
+    <div id="user-list-wrapper">
+        <h2>Users: {{ users.length }}</h2>
+        <div id="user-list">
+            <div ng-show="isAdmin() || true">
+                <ul>
+                    <li ng-repeat="user in users track by $index">
+                        <img ng-src="{{ user.avatar_url }}" width="20" height="20"/>
+                        {{ user.nickname }}
                 <span ng-show="user.role=='admin'">
                     (Admin)
                 </span>
-            </li>
-        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-
+<br/>
+<div class="clear"></div>
 <div class="footer">
   <p>From SSAU with ♥</p>
 </div>

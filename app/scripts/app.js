@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("radioApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]).config(function($routeProvider, $locationProvider, $httpProvider) {
+  angular.module("radioApp", ["ngCookies", "ngResource", "ngSanitize", "ngRoute", "ngAnimate"]).config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider.when("/", {
       templateUrl: "partials/main",
       controller: "MainCtrl"
