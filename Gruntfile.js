@@ -508,8 +508,8 @@ module.exports = function (grunt) {
     // uglify: {
     //   dist: {
     //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
+    //       '<%= yeoman.dist %>/scripts/*.js': [
+    //         '<%= yeoman.dist %>/scripts/*.js'
     //       ]
     //     }
     //   }
@@ -598,6 +598,7 @@ module.exports = function (grunt) {
     'bower-install',
     'coffee',
     'useminPrepare',
+    
     'concurrent:dist',
     'autoprefixer',
     'concat',
