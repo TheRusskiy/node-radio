@@ -1,5 +1,5 @@
 "use strict"
-angular.module("radioApp").factory "Auth", ($location, $rootScope, Session, User, $cookieStore, $window) ->
+angular.module("radioApp").factory "Auth", ($location, $rootScope, Session, User, $cookieStore, $window, $q) ->
 
   # Get currentUser from cookie
 #  $rootScope.currentUser = $cookieStore.get("user") or null
@@ -109,7 +109,14 @@ angular.module("radioApp").factory "Auth", ($location, $rootScope, Session, User
   @return {Object} user
   ###
   currentUser: ()->
-    User.get()
+    u = User.get()
+    if u._id?
+      return u
+    else
+      deferred = $q.defer();
+      deferred.resolve(null)
+      deferred.$promise = deferred.promise
+      return deferred
 
 
   ###

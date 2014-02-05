@@ -76,7 +76,7 @@ exports.me = (req, res) ->
 
   #  res.json(req.user || null);
   unless req.user
-    res.send 404, "USER_NOT_FOUND"
+    res.send 204
     return
   userId = req.user._id
   User.findById userId, "-salt -hashedPassword", (err, user) ->
