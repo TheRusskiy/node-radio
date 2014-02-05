@@ -54,7 +54,7 @@ UserSchema.virtual("userInfo").get ->
   nickname: @nickname
   _id: @_id
   role: @role
-  provider: @provider
+  providers: @providers
 
 
 # Public profile information

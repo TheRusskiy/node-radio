@@ -50,7 +50,7 @@ module.exports = ()->
     }
   , (accessToken, refreshToken, profile, done) ->
     User.findOne('vkontakte.id': profile.id)
-    .select("nickname first_name last_name vkontakte.id email avatar_url role")
+    .select("nickname first_name last_name vkontakte.id email avatar_url role providers")
     .exec (err, user) ->
       unless user?
           user = new User {
@@ -75,7 +75,7 @@ module.exports = ()->
     }
   , (accessToken, refreshToken, profile, done) ->
     User.findOne('email': profile._json.email)
-    .select("nickname first_name last_name facebook.id email avatar_url role")
+    .select("nickname first_name last_name facebook.id email avatar_url role providers")
     .exec (err, user) ->
       unless user?
         user = new User {

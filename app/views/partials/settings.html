@@ -16,29 +16,32 @@
                 </p>
             </div>
 
-            <div class="form-group">
-                <label>Current Password</label>
+            <div ng-show="currentUser && currentUser.providers.length == 0"> <!-- Password change BEGIN -->
+                <div class="form-group">
+                    <label>Current Password</label>
 
-                <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                       mongoose-error/>
+                    <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                           mongoose-error/>
 
-                <p class="help-block" ng-show="form.password.$error.mongoose">
-                    {{ errors.password }}
-                </p>
-            </div>
+                    <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ errors.password }}
+                    </p>
+                </div>
 
-            <div class="form-group">
-                <label>New Password</label>
+                <div class="form-group">
+                    <label>New Password</label>
 
-                <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                       ng-minlength="3"
-                       required/>
+                    <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                           ng-minlength="3"
+                           required/>
 
-                <p class="help-block"
-                   ng-show="passwordUpdate && (form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-                    Password must be at least 3 characters.
-                </p>
-            </div>
+                    <p class="help-block"
+                       ng-show="passwordUpdate && (form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                        Password must be at least 3 characters.
+                    </p>
+                </div>
+            </div> <!-- Password change END -->
+
             <p class="help-block" ng-show="errors.other">
                 {{ errors.other }}
             </p>
