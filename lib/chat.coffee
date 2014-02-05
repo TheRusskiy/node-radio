@@ -12,20 +12,19 @@ module.exports = (app, io) ->
   io.sockets.on "connection", (socket) ->
     socket.on 'subscribe', (data)->
       socket.handshake.getSession (err, session) ->
-        for user in user_list
-          if user.socket_id is socket.id
-            removeFromArray user_list, user
         if session.passport? and session.passport.user?
-          user = session.passport.user
-          user.socket_id = socket.id
-          user_list.push user
+          newUser = session.passport.user
         else
-          user_list.push {
-            socket_id: socket.id
+          newUser = {
             nickname: socket.handshake.randomNickname
             avatar_url : '/images/anonymous.png'
             role: 'guest'
           }
+        newUser.socket_id = socket.id
+        for user in user_list
+          if user.nickname is newUser.nickname
+            removeFromArray user_list, user
+        user_list.push newUser
         io.sockets.emit('user_list', user_list)
         Message.find({}).sort({'date': 1}).limit(100).exec (err, messages)->
           pojos = []
