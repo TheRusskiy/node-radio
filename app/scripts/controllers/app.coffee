@@ -14,4 +14,5 @@ angular.module('radioApp')
   #        $scope.errors.other = err.message;
       );
     Socket($scope).on 'guest_nickname', (nickname)->
+      $rootScope.guestNickname = nickname
       $cookieStore.put('preferredNickname', nickname);

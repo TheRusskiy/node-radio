@@ -30,9 +30,12 @@
                     <li ng-repeat="user in users track by $index">
                         <img ng-src="{{ user.avatar_url }}" width="40" height="40"/>
                         {{ user.nickname }}
-                <span ng-show="user.role=='admin'">
-                    (Admin)
-                </span>
+                        <span ng-show="user.role=='admin'">
+                            (Admin)
+                        </span>
+                        <span ng-show="user.nickname==guestNickname || user.nickname==currentUser.nickname">
+                            (You)
+                        </span>
                     </li>
                 </ul>
             </div>

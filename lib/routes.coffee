@@ -1,6 +1,4 @@
 "use strict"
-api = require("./controllers/api")
-#conferences = require("./controllers/conferences")
 index = require("./controllers")
 users = require("./controllers/users")
 session = require("./controllers/session")

@@ -7,6 +7,7 @@
         <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}">| <a href="/signup">Sign up</a></li>
         <li ng-show="currentUser" ng-class="{active: isActive('/logout')}">| <a href="" ng-click="logout()">Logout</a></li>
         <li ng-show="currentUser">| {{ currentUser.nickname }}</li>
+        <li ng-hide="currentUser">| {{ guestNickname }}</li>
         <li ng-show="isAdmin()">| Admin</li>
   </ul>
 </div>
