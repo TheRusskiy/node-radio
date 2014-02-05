@@ -335,7 +335,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/public/scripts/{,*/}*.js',
+            '<%= yeoman.dist %>/public/scripts/{,*/}*.{js,swf}',
             '<%= yeoman.dist %>/public/styles/{,*/}*.css',
             '<%= yeoman.dist %>/public/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/public/styles/fonts/*'
@@ -411,9 +411,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
+          cwd: './app/scripts',
+          src: './**/*.js',
+          dest: './app/scripts'
         }]
       }
     },
@@ -438,7 +438,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/**/*'
+            'fonts/**/*',
+            'scripts/*.swf'
           ]
         }, {
           expand: true,
@@ -597,12 +598,12 @@ module.exports = function (grunt) {
     'clean:dist',
     'bower-install',
     'coffee',
+    'ngmin',
     'useminPrepare',
     
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
     'copy:dist',
     'cdnify',
     'cssmin',

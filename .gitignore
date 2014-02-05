@@ -4,7 +4,9 @@ public
 .sass-cache
 app/bower_components
 app/scripts/**/*.js
+app/scripts/**/*.map
 app/scripts/*.js
+app/scripts/*.map
 heroku
 /views
 dist

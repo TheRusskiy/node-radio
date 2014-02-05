@@ -22,15 +22,16 @@
                     $(this).jPlayer("setMedia", stream).jPlayer("play");
                 }
             },
-            swfPath: "scripts",
+            swfPath: "scripts/Jplayer.swf",
             supplied: "mp3",
             preload: "none",
             wmode: "window",
+            nativeSupport: true,
             keyEnabled: true
         });
         setTimeout(function(){
             $("#jquery_jplayer_1").jPlayer("play")
-        }, 1000)
+        }, 1000);
 
 
     });

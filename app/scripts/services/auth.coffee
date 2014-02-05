@@ -1,5 +1,5 @@
 "use strict"
-angular.module("radioApp").factory "Auth", Auth = ($location, $rootScope, Session, User, $cookieStore, $window) ->
+angular.module("radioApp").factory "Auth", ($location, $rootScope, Session, User, $cookieStore, $window) ->
 
   # Get currentUser from cookie
 #  $rootScope.currentUser = $cookieStore.get("user") or null
