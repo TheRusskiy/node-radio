@@ -39,7 +39,9 @@ module.exports = (io) ->
             return accept err, false
           @_session = session
           cb err, session
-      handshakeData.randomNickname = "Guest"+randomIntBetween(1, 1000000).toString()
+      nickname = handshakeData.cookie.preferredNickname
+      if nickname then nickname = nickname.replace(/"/g, '')
+      handshakeData.nickname = nickname || "Guest"+randomIntBetween(1, 1000000).toString()
 
       accept null, true
 

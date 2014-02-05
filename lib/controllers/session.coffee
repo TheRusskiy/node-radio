@@ -48,7 +48,7 @@ exports.oauthCallback = (req, res, next) ->
   )(req, res, next)
 
 exports.closeWindow = (req, res, next) ->
-  res.cookie('currentUser', JSON.stringify(req.user));
+#  res.cookie('currentUser', JSON.stringify(req.user));
   res.render(
     'partials/oauth_callback',
     {

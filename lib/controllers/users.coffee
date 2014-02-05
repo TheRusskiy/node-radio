@@ -83,6 +83,6 @@ exports.me = (req, res) ->
     return next(new Error("Failed to load User"))  if err
     if user
       res.json user
-      res.cookie "currentUser", JSON.stringify(user)
+#      res.cookie "currentUser", JSON.stringify(user)
     else
       res.send 404, "USER_NOT_FOUND"

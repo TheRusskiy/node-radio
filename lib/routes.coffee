@@ -35,4 +35,4 @@ module.exports = (app) ->
 
   # All other routes to use Angular routing in app/scripts/app.js
   app.get "/partials/*", index.partials
-  app.get "/*", middleware.setUserCookie, index.index
+  app.get "/*", index.index

@@ -16,10 +16,11 @@ module.exports = (app, io) ->
           newUser = session.passport.user
         else
           newUser = {
-            nickname: socket.handshake.randomNickname
+            nickname: socket.handshake.nickname
             avatar_url : '/images/anonymous.png'
             role: 'guest'
           }
+          socket.emit 'guest_nickname', socket.handshake.nickname
         newUser.socket_id = socket.id
         for user in user_list
           if user.nickname is newUser.nickname
@@ -42,7 +43,7 @@ module.exports = (app, io) ->
           msg.avatar_url = user.avatar_url
         else
           msg.author_id = null
-          msg.nickname = socket.handshake.randomNickname
+          msg.nickname = socket.handshake.nickname
           msg.avatar_url?='/images/anonymous.png'
         msg.save (err)->
           if err then console.log('Error saving message: '+err.toString())
