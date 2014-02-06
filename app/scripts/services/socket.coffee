@@ -9,6 +9,7 @@ angular.module("radioApp").factory "Socket", ($rootScope) ->
              (in case perfomansc is an issues)
   ###
   resultObject = ($scope, global = true)->
+    scopeOfChange = if global then $rootScope else $scope
     # create an array of listeners if there is none (notice '?' operator):
     $scope._listeners?= []
     # if controller's scope is destroyed then $destroy event is fired
@@ -20,26 +21,25 @@ angular.module("radioApp").factory "Socket", ($rootScope) ->
 
     # return familiar to us socket.io object that can listen to and emit events:
     return  {
-      on: (eventName, callback) ->
-        ngCallback = ()->
-          args = arguments
-          scopeOfChange = if global then $rootScope else $scope
-          # trigger angular $digest cycle on selected scope:
-          scopeOfChange.$apply ->
-            callback.apply socket, args # apply function to original object
-        # save listener to a list on current scope so we can remove it later:
-        $scope._listeners.push {
-          eventName
-          ngCallback
-        }
-        # pass our own callback that wraps the one passed by a user
-        socket.on eventName, ngCallback
+    on: (eventName, callback) ->
+      ngCallback = ()->
+        args = arguments
+        # trigger angular $digest cycle on selected scope:
+        scopeOfChange.$apply ->
+          callback.apply socket, args # apply function to original object
+      # save listener to a list on current scope so we can remove it later:
+      $scope._listeners.push {
+        eventName
+        ngCallback
+      }
+      # pass our own callback that wraps the one passed by a user
+      socket.on eventName, ngCallback
 
-      emit: (eventName, data, callback) ->
-        socket.emit eventName, data, ->
-          args = arguments
-          $rootScope.$apply ->
-            callback.apply socket, args  if callback
+    emit: (eventName, data, callback) ->
+      socket.emit eventName, data, ->
+        args = arguments
+        scopeOfChange.$apply ->
+          callback.apply socket, args  if callback
     }
   # sometimes I find reconnect to be usefull:
   resultObject.reconnect = ()->
