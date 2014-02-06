@@ -1,26 +1,39 @@
 "use strict"
-angular.module("radioApp").service "Socket", ($rootScope) ->
+angular.module("radioApp").factory "Socket", ($rootScope) ->
+  # io is a global object available if you included socket.io script:
   socket = io.connect()
-  io.currSocket = socket.socket
-  returnValue = ($scope)->
-    $scope._subscriptions?= []
+  ###
+    $scope - scope of a controller
+    global - boolean indicating whether a change applies only
+             to a local scope or to a $rootScope
+             (in case perfomansc is an issues)
+  ###
+  resultObject = ($scope, global = true)->
+    # create an array of listeners if there is none (notice '?' operator):
+    $scope._listeners?= []
+    # if controller's scope is destroyed then $destroy event is fired
+    # on this event we should get rid of all listeners on this scope:
     $scope.$on '$destroy', (event)->
-      for sub in $scope._subscriptions
-        socket.removeListener(sub.eventName, sub.callback)
-      $scope._subscriptions.length=0
+      for lis in $scope._listeners
+        socket.removeListener(lis.eventName, lis.callback)
+      $scope._listeners.length=0
 
+    # return familiar to us socket.io object that can listen to and emit events:
     return  {
-      on: (eventName, cb) ->
-        callback = ->
+      on: (eventName, callback) ->
+        ngCallback = ()->
           args = arguments
-          $rootScope.$apply ->
-            cb.apply socket, args
-          $rootScope.$apply()
-        $scope._subscriptions.push {
+          scopeOfChange = if global then $rootScope else $scope
+          # trigger angular $digest cycle on selected scope:
+          scopeOfChange.$apply ->
+            callback.apply socket, args # apply function to original object
+        # save listener to a list on current scope so we can remove it later:
+        $scope._listeners.push {
           eventName
-          callback
+          ngCallback
         }
-        socket.on eventName, callback
+        # pass our own callback that wraps the one passed by a user
+        socket.on eventName, ngCallback
 
       emit: (eventName, data, callback) ->
         socket.emit eventName, data, ->
@@ -28,9 +41,8 @@ angular.module("radioApp").service "Socket", ($rootScope) ->
           $rootScope.$apply ->
             callback.apply socket, args  if callback
     }
-  returnValue.reconnect = ()->
-    io.currSocket.disconnect()
-    io.currSocket.connect()
-  return returnValue
-
-
+  # sometimes I find reconnect to be usefull:
+  resultObject.reconnect = ()->
+    socket.socket.disconnect()
+    socket.socket.connect()
+  return resultObject
