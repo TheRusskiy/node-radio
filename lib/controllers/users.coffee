@@ -8,6 +8,7 @@ Create user
 ###
 exports.create = (req, res, next) ->
   newUser = new User(req.body)
+  console.log req.body
   newUser.provider = "local"
   newUser.save (err) ->
     if err
@@ -45,16 +46,16 @@ exports.updateProfile = (req, res, next) ->
   oldPass = String(req.body.oldPassword)
   newPass = String(req.body.newPassword)
   User.findById userId, "", (err, user) ->
-    console.log oldPass
-    console.log user.authenticate(oldPass)
-    if oldPass isnt "undefined" and not user.authenticate(oldPass)
+    console.log "old: #{oldPass}, new: #{newPass}"
+    unless oldPass is "undefined" or user.authenticate(oldPass)
+      console.log 'Unsuccessfull attempt to change password'
       err =
         errors:
           password:
             type: "Old password is incorrect"
       res.json 400, err
       return
-    user.password = newPass if oldPass
+    user.password = newPass if oldPass isnt "undefined"
     user.nickname = req.body.nickname
     user.save (err) ->
       if err
