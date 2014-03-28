@@ -1,7 +1,7 @@
 "use strict"
 module.exports =
   env: "production"
-  host: "85.236.188.229"
+  host: "151.248.116.18"
   socketio:
     log_level: 1
 

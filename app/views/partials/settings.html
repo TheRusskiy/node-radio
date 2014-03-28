@@ -9,7 +9,7 @@
                 <label>Nickname</label>
 
                 <input type="text" name="nickname" class="form-control" ng-model="user.nickname"
-                       mongoose-error required/>
+                       mongoose-error maxlength="14" required/>
 
                 <p class="help-block" ng-show="form.nickname.$error.mongoose">
                     {{ errors.nickname }}

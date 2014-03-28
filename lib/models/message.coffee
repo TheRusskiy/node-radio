@@ -10,9 +10,10 @@ MessageSchema = new Schema(
   author_id: String
   nickname: String
   text: String
-  type: { type: String, default: "message"}
+  role: String
+  type: { type: String, 'default': "message"}
   avatar_url: { type: String }
-  date: { type: Date, default: Date.now }
+  date: { type: Date, 'default': Date.now }
 )
 
 mongoose.model('Message', MessageSchema);

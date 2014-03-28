@@ -1,0 +1,531 @@
+@font-face {
+	font-family: Noasarck;
+	src: url(./fonts/Noasarck.otf);
+}
+.dno {
+  display: none;
+}
+
+
+#rau-add_kp {
+	position: relative;
+	top: 0;
+	left: 0;
+
+	display: block;
+}
+
+
+
+
+#mainland {
+	//position: absolute;
+	//top: 0;
+	//left: 0;
+
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	//padding-right: 38%;
+	box-sizing: border-box;
+
+	background: url(/images/tumblr_n0cfgnn9rP1r46py4o1_1280.jpg);
+	/*background-size: cover cover;*/
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	z-index: -1;
+}
+
+.rau-stationname {
+	position: relative;
+	top: 7%;
+
+	display: block;
+	width: 100%;
+	padding: 0% 13%;
+	box-sizing: border-box;
+
+	color: #EEE;
+	font-family: Noasarck;
+	font-weight: normal;
+	font-size: 1.8em;
+	letter-spacing: 0.05em;
+}
+
+
+
+
+
+
+.rau-player {
+	position: relative;
+	top: 26%;
+
+	display: block;
+	width: 100%;
+	height: 40px;
+	padding: 0% 13%;
+	box-sizing: border-box;
+}
+.rau-playback_controls {
+	position: relative;
+
+	float: left;
+
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+
+	z-index: 1;
+}
+.rau-playback_controls svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+
+	cursor: pointer;
+}
+.rau-playback_controls svg polygon {
+	fill: #98d02e;
+}
+.rau-playback_controls .rau-stop {
+	display: none;
+}
+
+.rau-player h2 {
+	display: block;
+	padding: 0;
+	padding-left: 55px;
+	margin: 0;
+
+	font-family: "PT Sans", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	line-height: 1em;
+}
+.rau-title {
+	position: relative;
+	top: -5px;
+	left: 0;
+
+	display: inline-block;
+
+	color: #999;
+	font-size: 0.9em;
+}
+.rau-songname {
+	position: relative;
+	top: 0;
+	left: 0;
+
+	display: inline-block;
+
+	color: #EEE;
+	font-size: 1.5em;
+}
+
+
+
+
+.rau-keypoints {
+	position: relative;
+	top: 27%;
+
+	display: block;
+	width: 100%;
+	padding: 0% 13%;
+	box-sizing: border-box;
+
+	color: #EEE;
+	font-family: "PT Serif", Helvetica, Arial, sans-serif;
+	font-size: 1.1em;
+}
+.rau-keypoints > h1 {
+	font-family: Noasarck;
+	font-weight: normal;
+	font-size: 1.4em;
+	letter-spacing: 0.4em;
+}
+.rau-kp {
+	padding-left: 1.3em;
+
+	color: #4BC13E;
+	border-left: 0.2em solid #4BC13E;
+}
+.rau-kp q {
+	color: #EEE;
+	display: block;
+	quotes: "\201e" "\201c";
+}
+.rau-kp_author {
+	font-weight: normal;
+}
+.rau-posting_control {
+	position: relative;	
+}
+.rau-posting_control > button {
+	position: absolute;
+	top: 0;
+
+	display: block;
+
+	background: none;
+	border: none;
+
+	cursor: pointer;
+}
+.rau-posting_control > .rau-save {
+	display: none;
+	left: -45px;
+}
+.rau-posting_control.edited > .rau-save {
+	display: block;
+}
+.rau-posting_control > .rau-remove {
+	left: -75px;
+}
+
+
+
+
+
+#downloadarea {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding-right: 38%;
+	box-sizing: border-box;
+
+	overflow: hidden;
+
+	z-index: -1;
+}
+
+#downloadarea a {
+	position: relative;
+	top: 50%;
+
+	display: block;
+	margin-top: -90px;
+
+	font-family: Helvetica, Arial, sans-serif;
+	color: #235;
+
+	text-align: center;
+}
+
+
+
+
+
+
+
+#chat_wrapper {
+  border-left: 1px solid #e5e5e5;
+  background: url(/images//dark_geometric.png);
+	position: absolute;
+	top: 0;
+    right: 0;
+    //float:right;
+    margin-right: auto;
+
+	display: block;
+	//width: 38%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	background: rgba(255,0,0,0.1);
+}
+
+/*
+
+Here starts chat markup. the whole chat markup.
+
+*/
+
+
+/*
+chat main block. The parent
+*/
+.w_ct {
+	position: relative;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	overflow: hidden;
+	
+	background: url(/images//dark_geometric.png);
+
+	font-size: 12pt;
+}
+
+/*
+header line
+*/
+.w_ct-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+
+	background: rgba(0,0,0,0.3);
+
+	color: #FFF;
+	font-family: Noasarck;
+}
+.w_ct-header h1 {
+	color: #CCC;
+	font-weight: normal;
+	font-size: 1.4em;
+	letter-spacing: 0.1em;
+	padding-left: 1em;
+}
+
+/*
+control line
+*/
+.w_ct-controls {
+	position: relative;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	padding: 0.3em;
+	box-sizing: border-box;
+
+	background: rgba(0,0,0,0.3);
+
+	color: #FFF;
+}
+/*textarea*/
+.w_ct-opus {
+	position: relative;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	padding: 0.5em;
+	box-sizing: border-box;
+
+	background: rgba(0,0,0,0);
+
+	color: #FFF;
+	font-family: "PT Sans";
+	font-size: 1em;
+	letter-spacing: 0.05em;
+}
+.w_ct-smileys-control-frame {
+	position: relative;
+
+	display: block;
+	box-sizing: border-box;
+}
+.w_ct-smileys-show,
+.w_ct-smileys-hide {
+	position: absolute;
+	top: 0.5em;
+	right: 0em;
+
+	display: block;
+	width: 3em;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	background: none;
+	border: 0;
+
+	cursor: pointer;
+}
+.w_ct-smileys-frame {
+	position: relative;
+	bottom: 0.2em;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	max-height: 0;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	border: 0;
+
+	overflow: hidden;
+}
+.w_ct-smileys-frame > ul {
+	position: relative;
+	bottom: 0.2em;
+	left: 0;
+
+	display: block;
+	padding: 0.1em;
+	margin: 0;
+	margin-top: 0.6em;
+	box-sizing: border-box;}
+.w_ct-smileys-frame > ul > li {
+	position: relative;
+	bottom: 0.2em;
+	left: 0;
+
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	list-style: none;
+}
+
+
+
+
+/*
+flow of messages
+*/
+.w_ct-endless-scrollhider {
+	//position: absolute;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.w_ct-endless-scrollhider > div {
+	//position: absolute;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 200%;
+	max-height: 100%;
+	box-sizing: border-box;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.w_ct-endless-frame {
+	position: relative;
+    padding-bottom: 50px;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 50%;
+	box-sizing: border-box;
+
+	background: url(../stuff/dark_geometric.png);
+
+	color: #FFF;
+}
+.w_ct-flow {
+	position: relative;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+}
+.w_ct-flow > p {
+	position: relative;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+
+	font-family: "PT Sans";
+	font-size: 1em;
+	line-height: 1.4em;
+}
+.w_ct-flow b {
+	font-weight: normal;
+	color: #228DEA;
+
+	cursor: pointer;
+}
+.w_ct-flow > p > b {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 5em;
+	padding-right: 0.5em;
+	box-sizing: border-box;
+
+	text-align: right;
+}
+.w_ct-flow > p > i {
+	position: relative;
+	bottom: 0;
+	left: 0;
+
+	display: block;
+	height: 100%;
+	padding-left: 5em;
+	padding-right: 1em;
+	box-sizing: border-box;
+
+	font-style: normal;
+}
+.w_ct-flow > p > i > u {
+	position: relative;
+
+	display: block;
+	box-sizing: border-box;
+}
+.w_ct-flow > p > i > s {
+	position: relative;
+
+	display: inline-block;
+	height: 9px;
+	box-sizing: border-box;
+}
+.w_ct-flow > p > i > s > img {
+	position: relative;
+	top: -7px;
+
+	display: block;
+	box-sizing: border-box;
+}
+.w_ct-boss {
+	color: #F00 !important;
+}
+b.w_ct-me {
+	color: #228D3D;
+}
+/*
+i.w_ct-me {
+	color: #32FFFF;
+}
+*/

@@ -1,49 +1,79 @@
-<div ng-controller="ChatCtrl as chatCtrl" id="chat-container">
-    <div id="chat-wrapper">
-        <h2>Chat</h2>
-        <div id="messages" scroll-to-bottom="messages">
-            <ul>
-                <li ng-repeat="msg in messages track by $index">
-                    <img class="left" ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
-                    <span class="message-info"> {{ msg.readableDate }} <strong>{{ msg.nickname }}:</strong></span>
-                    <span class="message-text">{{ msg.text }}</span>
-                    <!--|| msg.author_id===currentUser._id-->
-                    <span class="right clickable" ng-show="isAdmin()"
-                       href="" ng-click="deleteMessage(msg)" >
-                        &#10006;
-                    </span>
-                    <div class="clear"></div>
-                    <hr ng-if="!$last"/>
-                </li>
-            </ul>
-        </div>
-        <form id="message-form" class="form right" name="form" ng-submit="submitMessage(form)" novalidate>
-            <input id="input" type="text" name="currentMessage" ng-model="currentMessage" required autofocus="autofocus"/>
-            <input id="submit" type="submit" value="Send"/>
-        </form>
-    </div>
-    <div id="user-list-wrapper">
-        <h2>Users: {{ users.length }}</h2>
-        <div id="user-list">
-            <div ng-show="isAdmin() || true">
-                <ul>
-                    <li ng-repeat="user in users track by $index">
-                        <img ng-src="{{ user.avatar_url }}" width="40" height="40"/>
-                        {{ user.nickname }}
-                        <span ng-show="user.role=='admin'">
-                            (Admin)
-                        </span>
-                        <span ng-show="user.nickname==guestNickname || user.nickname==currentUser.nickname">
-                            (You)
-                        </span>
-                    </li>
-                </ul>
+<div id="mainland">
+<div id="chat_wrapper">
+    <div class="w_ct">
+        <div class="w_ct-endless-scrollhider">
+            <div class="w_ct-endless-frame" ng-controller="ChatCtrl as chatCtrl" scroll-to-bottom="messages">
+                <div class="w_ct-flow">
+                    <ul class="message-list">
+                        <li ng-repeat="msg in messages track by $index"
+                            class="message {{msg.role=='admin' ? 'admin-message' : 'user-message'}}">
+                            <span class="message-info">
+                                <img class="left" ng-src="{{ msg.avatar_url }}" width="20" height="20"/>
+                                <span class="date">{{ msg.readableDate }}</span>
+                                <span class="nickname">{{ msg.nickname }}:</span>
+                            </span>
+                            <span class="message-text">{{ msg.text }}</span>
+                            <!--|| msg.author_id===currentUser._id-->
+                            <span class="right clickable" ng-show="isAdmin()"
+                                  href="" ng-click="deleteMessage(msg)">
+                            &#10006;
+                            </span>
+
+                            <div class="clear"></div>
+                            <!--<hr ng-if="!$last"/>-->
+                        </li>
+                    </ul>
+                </div>
+                <div class="w_ct-controls">
+                    <div class="w_ct-smileys-control-frame">
+                        <form id="message-form" class="form" name="form" ng-submit="submitMessage(form)" novalidate>
+                        <input type="text" size="95" name="currentMessage" ng-model="currentMessage" required autofocus="autofocus"/>
+                        <input id="submit" type="submit" value="Send"/>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<br/>
-<div class="clear"></div>
-<div class="footer">
-  <p>From SSAU with ♥</p>
 </div>
+
+<!--<div class="w_ct-smileys-frame">-->
+    <!--<ul>-->
+        <!--<li><img src="./stuff/smileys/ad.gif" name="ad"></li>-->
+        <!--<li><img src="./stuff/smileys/adv.gif" name="adv"></li>-->
+        <!--<li><img src="./stuff/smileys/alone.gif" name="alone"></li>-->
+        <!--<li><img src="./stuff/smileys/b.gif" name="b"></li>-->
+        <!--<li><img src="./stuff/smileys/bm.gif" name="bm"></li>-->
+        <!--<li><img src="./stuff/smileys/bug.gif" name="bug"></li>-->
+        <!--<li><img src="./stuff/smileys/cancer.gif" name="cancer"></li>-->
+        <!--<li><img src="./stuff/smileys/f.gif" name="f"></li>-->
+        <!--<li><img src="./stuff/smileys/fp.gif" name="fp"></li>-->
+        <!--<li><img src="./stuff/smileys/fsb.gif" name="fsb"></li>-->
+        <!--<li><img src="./stuff/smileys/fu.gif" name="fu"></li>-->
+        <!--<li><img src="./stuff/smileys/grm.gif" name="grm"></li>-->
+        <!--<li><img src="./stuff/smileys/il.gif" name="il"></li>-->
+        <!--<li><img src="./stuff/smileys/mih.gif" name="mih"></li>-->
+        <!--<li><img src="./stuff/smileys/troll.gif" name="troll"></li>-->
+    <!--</ul>-->
+<!--</div>-->
+<!--<h1 class="rau-stationname">Radio SSAU</h1>-->
+<!--<div class="rau-player">-->
+<!--<div class="rau-playback_controls">-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="rau-play">-->
+<!--<polygon points="0,0 34.6,20 0,40"/>-->
+<!--</svg>-->
+<!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="rau-stop dno">-->
+<!--<polygon points="0,0 12.3,0 12.3,40 0,40"/>-->
+<!--<polygon points="22.3,0 34.6,0 34.6,40 22.3,40"/>-->
+<!--</svg>-->
+<!--</div>-->
+<!--<h2 class="rau-title">now playing</h2>-->
+<!--<h2 class="rau-songname">MetallicA – Unforgiven II</h2>-->
+<!--</div>-->
+<!--<div class="rau-keypoints">-->
+<!--<h1>KEYPOINTS</h1>-->
+<!--<div class="rau-posting_control"><button class="rau-save"><img src="./stuff/save.png"></button><p class="rau-motif" contenteditable='true'>Сегодня разговариваем об освобождении Михаила Борисовича Ходорковского. Чего Путин хочет этим добиться, вернется ли МБ на политическую арену России? В качестве кого? Свое мнение выскажет известный политолог Валдис Пельш.</p></div>-->
+<!--<div class="rau-posting_control"><button class="rau-remove"><img src="./stuff/remove.png"></button><button class="rau-save"><img src="./stuff/save.png"></button><p class='rau-kp'><q contenteditable='true'>Ходорковский вполне может оказаться заложником Путина и подыгрывать ему.</q> — <b class='rau-kp_author' contenteditable='true'>Валдис Пельш</b></p></div>-->
+<!--<button id="rau-add_kp">Добавить лейтмотив</button>-->
+<!--</div>-->

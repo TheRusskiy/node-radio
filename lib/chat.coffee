@@ -47,9 +47,11 @@ module.exports = (app, io) ->
         if session.passport? and session.passport.user?
           user = session.passport.user
           msg.author_id = user._id
+          msg.role = user.role
           msg.nickname = user.nickname
           msg.avatar_url = user.avatar_url || gravatar(user.nickname)
         else
+          msg.role = "guest"
           msg.author_id = null
           msg.nickname = socket.handshake.nickname
           msg.avatar_url?=gravatar(msg.nickname)

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<title>RAU Site</title>
+	<meta name="keywords" content="Radio, SSAU, Aerospace University, Аэрокос, СГАУ, Радио СГАУ" />
+	<meta name="author" content="Aleksey Stulikov" />
+	<link rel="stylesheet" type="text/css" href="./css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="./css/components.css" />
+	<link rel="stylesheet" type="text/css" href="./css/blocks.css" />
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<!--script src="./js/preload.js"></script-->
+	<script src="./js/core.js"></script>
+</head>
+<body>
+
+
+<div id="mainland">
+	<h1 class="rau-stationname">Radio SSAU</h1>
+	<div class="rau-player">
+		<div class="rau-playback_controls">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="rau-play">
+				<polygon points="0,0 34.6,20 0,40"/>
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="rau-stop dno">
+				<polygon points="0,0 12.3,0 12.3,40 0,40"/>
+				<polygon points="22.3,0 34.6,0 34.6,40 22.3,40"/>
+			</svg>
+		</div>
+		<h2 class="rau-title">now playing</h2>
+		<h2 class="rau-songname">MetallicA – Unforgiven II</h2>
+	</div>
+	<div class="rau-keypoints">
+		<h1>KEYPOINTS</h1>
+		<div class="rau-posting_control"><button class="rau-save"><img src="./stuff/save.png"></button><p class="rau-motif" contenteditable='true'>Сегодня разговариваем об освобождении Михаила Борисовича Ходорковского. Чего Путин хочет этим добиться, вернется ли МБ на политическую арену России? В качестве кого? Свое мнение выскажет известный политолог Валдис Пельш.</p></div>
+		<div class="rau-posting_control"><button class="rau-remove"><img src="./stuff/remove.png"></button><button class="rau-save"><img src="./stuff/save.png"></button><p class='rau-kp'><q contenteditable='true'>Ходорковский вполне может оказаться заложником Путина и подыгрывать ему.</q> — <b class='rau-kp_author' contenteditable='true'>Валдис Пельш</b></p></div>
+		<button id="rau-add_kp">Добавить лейтмотив</button>
+	</div>
+</div>
+
+<div id="chat_wrapper">
+<div class="w_ct">
+	<div class="w_ct-endless-scrollhider">
+		<div>
+			<div class="w_ct-endless-frame">
+				<div class="w_ct-flow">
+					<p>
+						<i class="w_ct-boss">Эфир начинается!</i>
+						<b class="w_ct-boss">•BOSS•</b>
+					</p>
+					<p>
+						<i class="w_ct-me">Всем пятница, посоны!</i>
+						<b class="w_ct-me">/user/</b>
+					</p>
+					<p>
+						<i>Друзья, а как ник поменять? Помогите пожалуйста! <b class="w_ct-me">/user/</b>, помоги!</i>
+						<b>/newbie/</b>
+					</p>
+					<p>
+						<i>Смотри сюда: идешь в магазин такой, покупаешь маргарин, картошку (лучше африканскую гнилую) <s><img src="./stuff/smileys/inline/troll.gif"></s> и шампунь, смешиваешь и купаешься в этом, ник изменится. Гарантирую.</i>
+						<b>/michail/</b>
+					</p>
+					<p>
+						<i>Ребята, а как смайлы ставить? Как имя менять? Я уже все перепробовал. Мне <b>/michail/</b> посоветовал сходить в Перекресток, купить маргарин, картошку и щампунь. Я купил, смешал все это в ванной, залез в нее, включил воду, съел ложку цемента и, а гик так и не поменялся. Что я делаю не так?</i>
+						<b>/newbie/</b>
+					</p>
+					<p>
+						<i>Радио мне!</i><i><img src="./stuff/smileys/il.gif"><img src="./stuff/smileys/il.gif"><img src="./stuff/smileys/il.gif"></i>
+						<b>/pidgin/</b>
+					</p>
+					<p>
+						<i class="w_ct-me">Смыйлы убери, сука!</i>
+						<b class="w_ct-me">/user/</b>
+					</p>
+				</div>
+
+
+				<div class="w_ct-controls">
+					<div class="w_ct-smileys-frame">
+						<ul>
+							<li><img src="./stuff/smileys/ad.gif" name="ad"></li>
+							<li><img src="./stuff/smileys/adv.gif" name="adv"></li>
+							<li><img src="./stuff/smileys/alone.gif" name="alone"></li>
+							<li><img src="./stuff/smileys/b.gif" name="b"></li>
+							<li><img src="./stuff/smileys/bm.gif" name="bm"></li>
+							<li><img src="./stuff/smileys/bug.gif" name="bug"></li>
+							<li><img src="./stuff/smileys/cancer.gif" name="cancer"></li>
+							<li><img src="./stuff/smileys/f.gif" name="f"></li>
+							<li><img src="./stuff/smileys/fp.gif" name="fp"></li>
+							<li><img src="./stuff/smileys/fsb.gif" name="fsb"></li>
+							<li><img src="./stuff/smileys/fu.gif" name="fu"></li>
+							<li><img src="./stuff/smileys/grm.gif" name="grm"></li>
+							<li><img src="./stuff/smileys/il.gif" name="il"></li>
+							<li><img src="./stuff/smileys/mih.gif" name="mih"></li>
+							<li><img src="./stuff/smileys/troll.gif" name="troll"></li>
+						</ul>
+					</div>
+					<div class="w_ct-smileys-control-frame">
+						<textarea class="w_ct-opus">Хочу радио, запилите! :troll:    :mih:    :adv: n :alone::fsb::fsb: sd :troll:</textarea>
+						<button class="w_ct-smileys-show"><img src="./stuff/smbutton.png"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w_ct-header">
+		<h1>Warm Chattie</h1>
+	</div>
+	</div>
+</div>
+</div>
+
+
+<div id="downloadarea">
+	<a href="./chat.zip"><img src="./stuff/download.png"><br>pЗагрузить исходники<br></a>
+</div>
+
+</body>
+</html>

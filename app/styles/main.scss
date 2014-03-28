@@ -7,15 +7,35 @@
 
 /* Space out content a bit */
 body {
-    padding-bottom: 20px;
+    //padding-bottom: 20px;
+    margin: 0;
+    color: #FFF;
+    background-color: #313131;
+}
+
+a:link{
+  color:#FFF;
+}
+a:visited{
+  color:#FFF;
+}
+a:hover{
+  color:#FFF;
+}
+a:focus{
+  color:#FFF;
+}
+a:active{
+  color:#FFF;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-    padding-left: 15px;
-    padding-right: 15px;
+    //padding-left: 15px;
+    //padding-right: 15px;
+    background: url(/images//dark_geometric.png);
 }
 
 /* Custom page header */
@@ -33,9 +53,12 @@ body {
 
 /* Custom page footer */
 .footer {
-    padding-top: 19px;
+    padding-top: 0px;
     color: #777;
     border-top: 1px solid #e5e5e5;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .container-narrow > hr {
@@ -65,7 +88,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
+        //max-width: 730px;
     }
 
     /* Remove the padding we set earlier */
@@ -88,15 +111,19 @@ body {
 .header li {
   display: inline;
 }
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 #chat-container {
   width: 1100px;
   display: block;
 }
-#chat-wrapper, #user-list-wrapper {
-  display: inline-block;
-  overflow-x: hidden;
-  float: left;
-}
+//#chat-wrapper, #user-list-wrapper {
+//  display: inline-block;
+//  overflow-x: hidden;
+//  float: left;
+//}
 #message-form #input{
   width: 600px;
 }
@@ -113,7 +140,16 @@ body {
 }
 .message-info {
   float: left;
-  width:200px;
+  width: 200px;
+  .nickname{
+    max-width: 110px;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .date{
+    overflow: hidden;
+    display: inline-block;
+  }
 }
 .message-text {
   float: left;
@@ -137,4 +173,30 @@ body {
 }
 .clickable:hover {
   cursor: pointer;
+}
+
+.message-list{
+  list-style-type: none;
+  padding: 0px;
+  padding-left: 10px;
+  margin: 0px;
+}
+.message{
+  list-style-type: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  //img, .message-info, .message-info {
+  //  display: inline-block;
+  //}
+}
+.admin-message{
+  color: red;
+}
+.user-message{
+}
+
+.player{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
