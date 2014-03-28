@@ -16,7 +16,7 @@ angular.module("radioApp").factory "Socket", ($rootScope) ->
     # on this event we should get rid of all listeners on this scope:
     $scope.$on '$destroy', (event)->
       for lis in $scope._listeners
-        socket.removeListener(lis.eventName, lis.callback)
+        socket.removeListener(lis.eventName, lis.ngCallback)
       $scope._listeners.length=0
 
     # return familiar to us socket.io object that can listen to and emit events:
