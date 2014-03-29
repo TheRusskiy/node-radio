@@ -1,0 +1,4 @@
+#!/bin/sh
+SCRIPT="$(cat scripts/deploy-script)"
+#dVpwMxzuCHf2tf
+ssh root@151.248.116.18  "${SCRIPT}"
