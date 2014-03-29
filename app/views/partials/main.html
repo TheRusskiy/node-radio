@@ -12,7 +12,7 @@
                                 <span class="date">{{ msg.readableDate }}</span>
                                 <span class="nickname">{{ msg.nickname }}:</span>
                             </span>
-                            <span class="message-text">{{ msg.text }}</span>
+                            <span class="message-text" ng-bind-html="msg.text | message"></span>
                             <!--|| msg.author_id===currentUser._id-->
                             <span class="left clickable" ng-show="isAdmin()"
                                   href="" ng-click="deleteMessage(msg)">

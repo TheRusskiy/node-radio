@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('radioApp')
-  .controller 'ChatCtrl', ($scope, Socket, $rootScope)->
+  .controller 'ChatCtrl', ($scope, Socket, $rootScope, messageFilter)->
     readableDate = (date)->
       date = new Date(date)
       checkTime = (i) ->
