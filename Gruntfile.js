@@ -165,6 +165,16 @@ module.exports = function (grunt) {
             livereload: true
           }
         },
+        compiledCss: {
+            files: [
+            '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css'
+          ],
+          options: {
+//            debounceDelay: 2000,
+            livereload: true
+          }
+
+        },
         // jsTest: {
         //   files: ['test/spec/{,*/}*.js'],
         //   tasks: ['newer:jshint:test', 'karma']
@@ -179,7 +189,7 @@ module.exports = function (grunt) {
         livereload: {
           files: [
             '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
-            '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+//            '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
             '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
             '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
           ],
@@ -624,6 +634,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
 //    'newer:jshint',
 //    'build',
-      'test-watch',
+      'test-watch'
   ]);
 };
