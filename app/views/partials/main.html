@@ -25,11 +25,21 @@
                     </ul>
                 </div>
                 <div class="w_ct-controls">
+                    <div ng-show="showSmiles" class="smile-box">
+                        <ul>
+                            <li ng-repeat="smile in smiles">
+                                <img ng-src="{{smile.path}}" name="smile.shortcut" ng-click="addSmile(smile)">
+                            </li>
+                        </ul>
+                    </div>
                     <div class="w_ct-smileys-control-frame">
+
                         <form id="message-form" class="form" name="form" ng-submit="submitMessage(form)" novalidate>
-                        <input type="text" size="95" name="currentMessage" ng-model="currentMessage" required autofocus="autofocus"/>
+                        <input type="text" size="80" name="currentMessage" ng-model="currentMessage" required autofocus="autofocus"/>
                         <input id="submit" type="submit" value="Send"/>
                         </form>
+                        <button class="w_ct-smileys-show"><img src="./images/smbutton.png" ng-click="toggleSmiles()"></button>
+
                     </div>
                 </div>
             </div>

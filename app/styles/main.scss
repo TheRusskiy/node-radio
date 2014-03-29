@@ -124,8 +124,25 @@ a:active{
 //  overflow-x: hidden;
 //  float: left;
 //}
-#message-form #input{
-  width: 600px;
+
+.smile-box {
+  position: absolute;
+  top: -70px;
+  background: rgba(0,0,0,0.3);
+  width: 100%;
+  //float: right;
+  ul {
+    list-style-type: none;
+    padding-left: 0px;
+    li {
+      display: inline;
+      padding: 5px;
+    }
+  }
+}
+#message-form{
+  //width: 600px;
+  display: inline-block;
 }
 #messages, #user-list{
   height: 600px;

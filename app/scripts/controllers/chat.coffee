@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('radioApp')
-  .controller 'ChatCtrl', ($scope, Socket, $rootScope, messageFilter)->
+  .controller 'ChatCtrl', ($scope, Socket, $rootScope, messageFilter, Smiles)->
+    $scope.showSmiles = false
+    $scope.currentMessage = ""
+    $scope.smiles = Smiles
+    $scope.addSmile = (smile)->
+      $scope.currentMessage+=':'+smile.shortcut+':'
+    $scope.toggleSmiles = ()->
+      $scope.showSmiles = !$scope.showSmiles
     readableDate = (date)->
       date = new Date(date)
       checkTime = (i) ->
@@ -41,7 +48,16 @@ angular.module('radioApp')
     $scope.deleteMessage = (msg)->
       Socket($scope).emit 'delete_message', {id: msg._id}
 
+    parseMessage = (text)->
+      w_ct_smiley = /(?:(?::)([A-Za-z0-9]{2,})(?::))/g;
+      makeSmileLink = (match0, match1)->
+        for smile in Smiles
+          if match1 is smile.shortcut
+            return "<img src='#{smile.path}'>"
+        return "no-img"
+      text = text.replace(w_ct_smiley, makeSmileLink)
+
     $scope.submitMessage = (form)->
       if form.$valid
-        Socket($scope).emit 'create_message', {text: $scope.currentMessage}
+        Socket($scope).emit 'create_message', {text: parseMessage($scope.currentMessage)}
         $scope.currentMessage = ""

@@ -348,11 +348,11 @@ control line
 }
 .w_ct-smileys-show,
 .w_ct-smileys-hide {
-	position: absolute;
-	top: 0.5em;
-	right: 0em;
+	//position: absolute;
+	//top: 0.5em;
+	//right: 0em;
 
-	display: block;
+	display: inline-block;
 	width: 3em;
 	padding: 0;
 	margin: 0;
